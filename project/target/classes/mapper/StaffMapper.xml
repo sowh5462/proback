@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.Staff">
+	<select id="staffList" resultType="com.example.domain.StaffVO">
+		select * from view_staff where use_work_num=#{use_work_num) order by sta_employ
+	</select>
+	
+	<update id="staffUpdate">
+		update tbl_staff set sta_bank=#{sta_bank}, sta_type=#{sta_type} where use_id=#{use_id}
+	</update>
+	
+	
+</mapper>
