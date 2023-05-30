@@ -12,14 +12,14 @@ import com.example.dao.StaffDAO;
 import com.example.domain.StaffVO;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/staff")
 public class StaffController {
 	@Autowired
 	StaffDAO dao;
 	
-	@RequestMapping("/staff/list.json")
-	public List<StaffVO> staffList(){
-		return dao.staffList();
+	@RequestMapping("/list.json")
+	public List<StaffVO> staffList(int use_work_num){
+		return dao.staffList(use_work_num);
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
