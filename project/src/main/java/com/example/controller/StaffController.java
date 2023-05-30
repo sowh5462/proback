@@ -18,13 +18,18 @@ public class StaffController {
 	StaffDAO dao;
 	
 	@RequestMapping("/list.json")
-	public List<StaffVO> staffList(){
-		return dao.staffList();
+	public List<StaffVO> staffList(int use_work_num){
+		return dao.staffList(use_work_num);
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public void update(@RequestBody StaffVO vo) {
 		dao.update(vo);
+	}
+	
+	@RequestMapping("/pay")
+	public int staffPay(int use_work_num) {
+		return dao.staffPay(use_work_num);
 	}
 	
 }

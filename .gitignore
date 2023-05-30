@@ -71,3 +71,9 @@ local.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
 project/.classpath
+project/target/classes/log4j.xml
+project/target/classes/log4jdbc.log4j2.properties
+project/target/classes/mapper/MysqlMapper.xml
+project/target/classes/mapper/UserMapper.xml
+project/target/test-classes/log4j.xml
+project/target/m2e-wtp/web-resources/META-INF/maven/com.example/controller/pom.properties
