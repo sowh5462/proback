@@ -15,8 +15,5 @@ public class UserController {
 	@Autowired
 	UserDAO dao;
 	
-	@RequestMapping("/staff/list.json")
-	public List<StaffVO> staffList(){
-		return dao.staffList();
-	}
+	
 }

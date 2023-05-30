@@ -12,12 +12,12 @@ import com.example.dao.StaffDAO;
 import com.example.domain.StaffVO;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/staff")
 public class StaffController {
 	@Autowired
 	StaffDAO dao;
 	
-	@RequestMapping("/staff/list.json")
+	@RequestMapping("/list.json")
 	public List<StaffVO> staffList(){
 		return dao.staffList();
 	}
