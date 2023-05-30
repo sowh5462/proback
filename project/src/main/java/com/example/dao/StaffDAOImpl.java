@@ -22,4 +22,8 @@ public class StaffDAOImpl implements StaffDAO {
 		session.update(namespace + ".update", vo);
 		
 	}
+	@Override
+	public int staffPay(int use_work_num) {
+		return session.selectOne(namespace+".staffPay", use_work_num);
+	}
 }
