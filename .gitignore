@@ -1,4 +1,5 @@
 /.metadata/
+/Servers/
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse
 
@@ -69,3 +70,4 @@ local.properties
 .sts4-cache/
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
+project/.classpath
