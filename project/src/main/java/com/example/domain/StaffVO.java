@@ -12,7 +12,7 @@ public class StaffVO extends UserVO {
 	private Date sta_end;
 	private String sta_contract;
 	private int sta_annual;
-	private int no;
+	
 	
 	
 	@Override
