@@ -12,10 +12,10 @@ import com.example.domain.StaffVO;
 public class StaffDAOImpl implements StaffDAO {
 	@Autowired
 	SqlSession session;
-	String namespace = "com.example.mapper.StaffMapper";
+	String namespace="com.example.mapper.Staff";
 	@Override
-	public List<StaffVO> staffList() {
-		return session.selectList(namespace + ".staffList");
+	public List<StaffVO> staffList(int use_work_num) {
+		return session.selectList(namespace + ".staffList", use_work_num);
 	}
 	@Override
 	public void update(StaffVO vo) {
