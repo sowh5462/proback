@@ -2,6 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.EventMapper">
 	<select id="list" resultType="com.example.domain.EventVO">
-		select * from tbl_event
+		select *, date_format(event_start,"%Y-%m-%d") start, date_format(event_end,"%Y-%m-%d") end from tbl_event
 	</select>
+	
+	<select id="event" resultType="com.example.domain.EventVO">
+		select * from tbl_event where event_id=#{event_id}
+	</select>
+
+	<insert id="insert">
+		insert into tbl_event(use_id, use_work_num, event_name, event_start, event_end)
+		values(#{use_id}, #{use_work_num}, #{event_name}, #{event_start}, #{event_end});
+	</insert>
+	
+	<update id="update">
+		update tbl_event set event_name=#{event_name}, event_start=#{event_start}, event_end=#{event_end}
+		where event_id=#{event_id};
+	</update>
+	
+	<delete id="delete">
+		delete from tbl_event where event_id=#{event_id};
+	</delete>
 </mapper>

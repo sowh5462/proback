@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.UserMapper">
-	<select id="list" resultType="com.example.domain.StaffVO">
-		select * from view_staff order by use_id
+	
+	
+	<select id="staffList" resultType="com.example.domain.StaffVO">
+      select * from view_staff order by use_id
+   	</select>
+   	
+	<insert id="uinsert">
+	   insert into tbl_user(use_work_num, use_login_id, use_login_pass, 
+	   use_phone, use_name, use_birth, use_address, use_email, use_type)
+	   values(#{use_work_num}, #{use_login_id}, use_login_pass, use_phone, use_name, use_birth,
+	   use_address, use_email, use_type)
+	</insert>
+	<insert id="winsert">
+	   insert into tbl_workplace(use_id, use_work_num, work_address, work_name)
+	   values(#{use_id}, #{use_work_num}, #{work_address}, #{work_name})
+	</insert>
+	<insert id="sinsert">
+       INSERT INTO tbl_staff (use_id, sta_bank, sta_account, sta_type, sta_image, sta_employ, sta_end, sta_contract, sta_annual)
+       VALUES (#{use_id}, #{sta_bank}, #{sta_account}, #{sta_type}, #{sta_image}, #{sta_employ}, #{sta_end}, #{sta_contract}, #{sta_annual})
+    </insert>
+    
+	<select id="wread" resultType="hashmap">
+	   select * from view_work where use_login_id=#{use_login_id}
 	</select>
+
 </mapper>
