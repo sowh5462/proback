@@ -27,4 +27,9 @@ public class StaffController {
 		dao.update(vo);
 	}
 	
+	@RequestMapping("/pay")
+	public int staffPay(int use_work_num) {
+		return dao.staffPay(use_work_num);
+	}
+	
 }
