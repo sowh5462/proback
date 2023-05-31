@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.Staff">
+<mapper namespace="com.example.mapper.StaffMapper">
 	<select id="staffList" resultType="com.example.domain.StaffVO">
 		select * from view_staff where use_work_num=#{use_work_num};
 	</select>
