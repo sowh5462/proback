@@ -9,8 +9,6 @@
 		update tbl_staff set sta_bank=#{sta_bank}, sta_type=#{sta_type} where use_id=#{use_id}
 	</update>
 	
-	<select id="staffPay" resultType="int">
-		select sum(pay_regular) sum_pay from view_staffPay where use_work_num = #{use_work_num};
-	</select>
+	
 	
 </mapper>
