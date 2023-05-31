@@ -12,14 +12,19 @@ import com.example.domain.StaffVO;
 public class StaffDAOImpl implements StaffDAO {
 	@Autowired
 	SqlSession session;
-	String namespace="com.example.mapper.Staff";
+	String namespace="com.example.mapper.StaffMapper";
+	
 	@Override
 	public List<StaffVO> staffList(int use_work_num) {
 		return session.selectList(namespace + ".staffList", use_work_num);
 	}
 	@Override
 	public void update(StaffVO vo) {
-		session.update(namespace + ".update", vo);
+		session.update(namespace + ".staffUpdate", vo);
 		
+	}
+	@Override
+	public int staffPay(int use_work_num) {
+		return session.selectOne(namespace+".staffPay", use_work_num);
 	}
 }
