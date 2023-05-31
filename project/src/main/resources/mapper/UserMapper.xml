@@ -23,7 +23,7 @@
     </insert>
     
 	<select id="wread" resultType="hashmap">
-	   select * from view_work where use_login_id=#{use_login_id}
+	   select * from tbl_user where use_login_id=#{use_login_id}
 	</select>
 
 </mapper>
