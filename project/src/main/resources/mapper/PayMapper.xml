@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.PayMapper">
+	<select id="paySum" resultType="int">
+		select sum(pay_regular) from view_staffPay where use_work_num = #{use_work_num}
+	</select>
+	<select id="staffTotal" resultType="int">
+		select count(*) from view_staff where use_work_num = #{use_work_num}
+	</select>
+</mapper>
