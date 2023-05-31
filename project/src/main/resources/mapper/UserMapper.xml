@@ -4,4 +4,17 @@
 	<select id="staffList" resultType="com.example.domain.StaffVO">
 		select * from view_staff order by use_id
 	</select>
+	<insert id="uinsert">
+		insert into tbl_user(use_work_num, use_login_id, use_login_pass, 
+		use_phone, use_name, use_birth, use_address, use_email, use_type)
+		values(#{use_work_num}, #{use_login_id}, use_login_pass, use_phone, use_name, use_birth,
+		use_address, use_email, use_type)
+	</insert>
+	<insert id="winsert">
+		insert into tbl_workplace(use_id, use_work_num, work_address, work_name)
+		values(#{use_id}, #{use_work_num}, #{work_address}, #{work_name})
+	</insert>
+	<select id="wread" resultType="hashmap">
+		select * from tbl_user where use_login_id=#{use_login_id}
+	</select>
 </mapper>
