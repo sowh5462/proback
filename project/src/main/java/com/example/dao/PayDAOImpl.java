@@ -12,12 +12,12 @@ public class PayDAOImpl implements PayDAO {
 
 	@Override
 	public int paySum(int use_work_num) {
-		return session.selectOne(namespace + ".paySum" + use_work_num);
+		return session.selectOne(namespace + ".paySum" ,use_work_num);
 	}
 
 	@Override
 	public int staffTotal(int use_work_num) {
-		return session.selectOne(namespace + ".staffTotal" + use_work_num);
+		return session.selectOne(namespace + ".staffTotal" ,use_work_num);
 	}
 
 }
