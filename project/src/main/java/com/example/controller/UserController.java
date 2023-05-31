@@ -1,6 +1,8 @@
 package com.example.controller;
 
+
 import java.io.File;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,9 +19,11 @@ import com.example.domain.StaffVO;
 import com.example.domain.UserVO;
 import com.example.domain.WorkplaceVO;
 
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
    @Autowired
    UserDAO dao;
    
@@ -74,3 +78,4 @@ public class UserController {
        }
    }
 }
+

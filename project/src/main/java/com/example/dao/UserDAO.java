@@ -9,9 +9,8 @@ import com.example.domain.WorkplaceVO;
 
 public interface UserDAO {
    public List<StaffVO> staffList();
-   public HashMap<String, Object> wread(String use_login_id);
+   public HashMap<String, Object> wread(String use_login_id, int use_type);
    public void uinsert(UserVO vo);
    public void winsert(WorkplaceVO vo);
    public void sinsert(StaffVO vo);
-
 }
