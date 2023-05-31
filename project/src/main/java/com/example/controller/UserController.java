@@ -33,23 +33,31 @@ public class UserController {
    }
    
    @RequestMapping(value="/login", method=RequestMethod.POST)
-   public int login(@RequestBody UserVO vo) {
-      int result=0;
-      HashMap<String, Object> map=dao.wread(vo.getUse_login_id());
+   public int[] login(@RequestBody UserVO vo) {
+      int[] result = new int[2]; //아이디 없는경우
+      HashMap<String, Object> map=dao.wread(vo.getUse_login_id(), vo.getUse_type());
       
+      result[0] = 0;
       if(map != null) {
          if(map.get("use_login_pass").equals(vo.getUse_login_pass())) {
-            result=1;
+            result[0]=1; //성공
          }else {
-            result=2;
+            result[0]=2; //비번틀림
          }
+
+         if(map.get("use_type").equals(1)){
+        	 result[1] = 1; // 사장
+   
+         	}else{
+         		result[1] = 0; // 직원
+         	}
       }
       return result;
    }
    
    @RequestMapping("/read")
-   public HashMap<String, Object> wread(String use_login_id){
-      return dao.wread(use_login_id);
+   public HashMap<String, Object> wread(String use_login_id, int use_type){
+      return dao.wread(use_login_id, use_type);
    }
    @RequestMapping(value="/register", method=RequestMethod.POST)
    public void insert(UserVO vo) {
