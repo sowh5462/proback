@@ -35,7 +35,7 @@ public class UserController {
    @RequestMapping(value="/login", method=RequestMethod.POST)
    public int[] login(@RequestBody UserVO vo) {
       int[] result = new int[2]; //아이디 없는경우
-      HashMap<String, Object> map=dao.wread(vo.getUse_login_id());
+      HashMap<String, Object> map=dao.uread(vo.getUse_login_id());
       
       result[0] = 0;
       if(map != null) {
@@ -61,9 +61,28 @@ public class UserController {
       dao.uinsert(vo);
    }
 
-   @RequestMapping(value="/read",  method=RequestMethod.GET)
+   @RequestMapping(value="/wread",  method=RequestMethod.GET)
    public HashMap<String, Object> wread(String use_login_id){
 	   return dao.wread(use_login_id);
+   }
+   
+   @RequestMapping(value="/sread",  method=RequestMethod.GET)
+   public HashMap<String, Object> sread(String use_login_id){
+	   return dao.sread(use_login_id);
+   }
+   
+   @RequestMapping(value="/uread",  method=RequestMethod.GET)
+   public HashMap<String, Object> uread(String use_login_id){
+	   return dao.uread(use_login_id);
+   }
+   
+   @RequestMapping(value="/wupdate", method=RequestMethod.POST)
+   public void wupdate(UserVO vo) {
+	   try {
+		dao.wupdate(vo);
+	} catch (Exception e) {
+		System.out.println("정보수정:"+e.toString());
+	}
    }
 
    @RequestMapping(value="/register/workplace", method=RequestMethod.POST)

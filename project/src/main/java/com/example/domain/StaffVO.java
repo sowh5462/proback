@@ -12,6 +12,9 @@ public class StaffVO extends UserVO {
 	private Date sta_end;
 	private String sta_contract;
 	private int sta_annual;
+	private String start;
+	private String end;
+	private String ujoin;
 	
 	
 	
@@ -19,7 +22,26 @@ public class StaffVO extends UserVO {
 	public String toString() {
 		return "StaffVO [use_id=" + use_id + ", sta_bank=" + sta_bank + ", sta_account=" + sta_account + ", sta_type="
 				+ sta_type + ", sta_image=" + sta_image + ", sta_employ=" + sta_employ + ", sta_end=" + sta_end
-				+ ", sta_contract=" + sta_contract + ", sta_annual=" + sta_annual + "]";
+				+ ", sta_contract=" + sta_contract + ", sta_annual=" + sta_annual + ", start=" + start + ", end=" + end
+				+ ", ujoin=" + ujoin + "]";
+	}
+	public String getStart() {
+		return start;
+	}
+	public void setStart(String start) {
+		this.start = start;
+	}
+	public String getEnd() {
+		return end;
+	}
+	public void setEnd(String end) {
+		this.end = end;
+	}
+	public String getUjoin() {
+		return ujoin;
+	}
+	public void setUjoin(String ujoin) {
+		this.ujoin = ujoin;
 	}
 	public int getUse_id() {
 		return use_id;
