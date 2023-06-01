@@ -36,7 +36,7 @@ public class UserDAOImpl implements UserDAO {
    }
 
 	@Override
-	public HashMap<String, Object> wread(String use_login_id, int use_type) {
+	public HashMap<String, Object> wread(String use_login_id) {
 		return session.selectOne(namespace + ".wread", use_login_id);
 	}
 
