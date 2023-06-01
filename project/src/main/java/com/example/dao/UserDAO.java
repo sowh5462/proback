@@ -13,5 +13,4 @@ public interface UserDAO {
    public void uinsert(UserVO vo);
    public void winsert(WorkplaceVO vo);
    public void sinsert(StaffVO vo);
-
 }
