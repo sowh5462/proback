@@ -38,8 +38,8 @@ public class EventDAOImpl implements EventDAO{
 	}
 
 	@Override
-	public EventVO event(int event_id) {
-		return session.selectOne(namespace+".event", event_id);
+	public List<EventVO> event(String event_start) {
+		return session.selectList(namespace+".event", event_start);
 	}
 	
 	

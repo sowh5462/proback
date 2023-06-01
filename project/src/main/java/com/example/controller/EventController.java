@@ -17,11 +17,17 @@ public class EventController {
 	@Autowired
 	EventDAO dao;
 	
+	@RequestMapping("/")
+	public List<EventVO> event(String event_start) {
+		return dao.event(event_start);
+	}
+	
 	@RequestMapping("/list.json")
 	public List<EventVO> list(){
 		return dao.list();
 	}
 	
+		
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public void insert(@RequestBody EventVO vo) {
 		dao.insert(vo);
