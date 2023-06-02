@@ -6,7 +6,10 @@
 	</select>
 	
 	<select id="event" resultType="com.example.domain.EventVO">
-		select * from tbl_event where event_id=#{event_id}
+		select *, date_format(event_start,"%Y-%m-%d") start, date_format(event_end,"%Y-%m-%d") end 
+		from tbl_event 
+		where #{event_start} &gt;= event_start and #{event_start} &lt;= event_end
+		order by event_start
 	</select>
 
 	<insert id="insert">
