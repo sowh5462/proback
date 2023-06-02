@@ -45,6 +45,21 @@ public class UserDAOImpl implements UserDAO {
 		session.insert(namespace + ".sinsert", vo);
 		
 	}
+
+	@Override
+	public HashMap<String, Object> sread(String use_login_id) {
+		return session.selectOne(namespace + ".sread", use_login_id);
+	}
+
+	@Override
+	public HashMap<String, Object> uread(String use_login_id) {
+		return session.selectOne(namespace + ".uread", use_login_id);
+	}
+
+	@Override
+	public void wupdate(UserVO vo) {
+		session.update(namespace + ".wupdate", vo);
+	}
    
 }
 
