@@ -14,7 +14,7 @@ public class PayDAOImpl implements PayDAO {
 	String namespace = "com.example.mapper.PayMapper";
 
 	@Override
-	public int paySum(int use_work_num) {
+	public String paySum(int use_work_num) {
 		return session.selectOne(namespace + ".paySum", use_work_num);
 	}
 
@@ -24,7 +24,7 @@ public class PayDAOImpl implements PayDAO {
 	}
 
 	@Override
-	public int tempPaySum(int use_work_num) {
+	public String tempPaySum(int use_work_num) {
 		return session.selectOne(namespace + ".tempPaySum", use_work_num);
 	}
 
@@ -36,6 +36,11 @@ public class PayDAOImpl implements PayDAO {
 	@Override
 	public List<HashMap<String, Object>> payMonth(int use_work_num) {
 		return session.selectList(namespace + ".payMonth", use_work_num);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> payInfo(int use_work_num) {
+		return session.selectList(namespace + ".payInfo", use_work_num);
 	}
 
 	
