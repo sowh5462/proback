@@ -7,4 +7,13 @@
 	<select id="staffTotal" resultType="int">
 		select count(*) from view_staff where use_work_num = #{use_work_num}
 	</select>
+	<select id="tempPaySum" resultType="int">
+		select sum(pay_hour * 6) from view_staffPay where use_work_num = #{use_work_num}
+	</select>
+	<select id="staffType" resultType="hashmap">
+		select sta_type, count(*) count from view_staff where use_work_num = #{use_work_num} group by sta_type
+	</select>
+	<select id="payMonth" resultType="hashmap">
+		select date_format(pay_date, '%Y-%m') pay_month, sum(pay_regular) pay_sum from view_staffPay where use_work_num = #{use_work_num} group by pay_month
+	</select>
 </mapper>

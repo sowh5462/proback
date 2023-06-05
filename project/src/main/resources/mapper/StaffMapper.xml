@@ -8,5 +8,5 @@
 	<update id="staffUpdate">
 		update tbl_staff set sta_bank=#{sta_bank}, sta_type=#{sta_type} where use_id=#{use_id}
 	</update>
-	
+
 </mapper>
