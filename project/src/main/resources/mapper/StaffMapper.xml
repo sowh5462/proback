@@ -12,11 +12,5 @@
 	<update id="sta_Update">
 		update tbl_staff set sta_bank=#{sta_bank}, sta_type=#{sta_type}, sta_account=#{sta_account}, sta_employ=#{sta_employ}, sta_end=#{sta_end} where use_id=#{use_id}
 	</update>
-	
-	
-	
-	
-	
-	
-	
+
 </mapper>

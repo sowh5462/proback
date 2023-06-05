@@ -8,22 +8,24 @@
    	</select>
    	
 	<insert id="uinsert">
-	   insert into tbl_user(use_work_num, use_login_id, use_login_pass, 
-	   use_phone, use_name, use_birth, use_address, use_email, use_type)
-	   values(#{use_work_num}, #{use_login_id}, use_login_pass, use_phone, use_name, use_birth,
-	   use_address, use_email, use_type)
-	</insert>
+      insert into tbl_user(use_work_num, use_login_id, use_login_pass, 
+      use_phone , use_name, use_birth, use_address, use_email, use_type)
+      values(#{use_work_num}, #{use_login_id}, #{use_login_pass}, #{use_phone}, #{use_name}, #{use_birth},
+       #{use_address}, #{use_email}, #{use_type})
+   </insert>
+   
 	<insert id="winsert">
 	   insert into tbl_workplace(use_id, use_work_num, work_address, work_name)
 	   values(#{use_id}, #{use_work_num}, #{work_address}, #{work_name})
 	</insert>
+	
 	<insert id="sinsert">
        INSERT INTO tbl_staff (use_id, sta_bank, sta_account, sta_type, sta_image, sta_employ, sta_end, sta_contract, sta_annual)
        VALUES (#{use_id}, #{sta_bank}, #{sta_account}, #{sta_type}, #{sta_image}, #{sta_employ}, #{sta_end}, #{sta_contract}, #{sta_annual})
     </insert>
     
 	<select id="wread" resultType="hashmap">
-	   select * from view_work where use_login_id=#{use_login_id}
+	   select * from tbl_user where use_login_id=#{use_login_id}
 	</select>
 
 </mapper>
