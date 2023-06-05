@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.CheckMapper">
-	<select id="getTime" resultType="string">
-		select now() today
+
+	<!--직원목록 (연차정보) -->
+	<select id="annualList" resultType="com.example.domain.CheckVO">
+		select * from view_staff where use_work_num = #{use_work_num} and sta_type = 0 or sta_type = 1
+		 order by use_name limit #{start}, #{size}		
 	</select>
+	
+	<!--신청중 조회, 버튼 -->
+	<select id="confirmCheck" resultType="int">
+		select count(*) from view_check where chk_confirm = 1 and use_id=#{use_id};
+	</select>
+	
+	<!-- 날짜별 결재내역 리스트 -->
+	<select id="dayCheck" resultType="com.example.domain.CheckVO">
+		select * from view_check 
+		where date_format(chk_day,'%Y-%m-%d') = #{chk_day} and use_work_num=#{use_work_num}
+	</select>
+	
+	<!-- 신청중,완료 필터 -->
+	<select id="checkFilter" resultType="com.example.domain.CheckVO">
+		select * from view_check where chk_confirm = #{chk_confirm} and use_work_num=#{use_work_num};
+	</select>
+	
+	<!-- 유저별 결재상세내역 -->
+	<select id="checkUser" resultType="com.example.domain.CheckVO">
+		select * from view_check where chk_confirm = 1 and use_id=#{use_id}
+	</select>
+	
+	<!--승인여부 업데이트 -->
+	<update id="confirmUpdate">
+		update tbl_check set chk_confirm = #{chk_confirm} where chk_code = #{chk_code}
+	</update>
 </mapper>

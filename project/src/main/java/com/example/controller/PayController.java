@@ -14,7 +14,7 @@ public class PayController {
 	PayDAO dao;
 	
 	@RequestMapping("/sum")
-	public int paySum(int use_work_num) {
+	public String paySum(int use_work_num) {
 		return dao.paySum(use_work_num);
 	}
 	@RequestMapping("/total")
@@ -22,7 +22,7 @@ public class PayController {
 		return dao.staffTotal(use_work_num);
 	}
 	@RequestMapping("/temp")
-	public int tempPaySum(int use_work_num) {
+	public String tempPaySum(int use_work_num) {
 		return dao.tempPaySum(use_work_num);
 	}
 	@RequestMapping("/type")
@@ -32,6 +32,10 @@ public class PayController {
 	@RequestMapping("/month")
 	public List<HashMap<String, Object>> payMonth(int use_work_num) {
 		return dao.payMonth(use_work_num);
+	}
+	@RequestMapping("/info")
+	public List<HashMap<String, Object>> payInfo(int use_work_num) {
+		return dao.payInfo(use_work_num);
 	}
 
 }
