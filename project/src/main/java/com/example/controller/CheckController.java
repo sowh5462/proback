@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dao.CheckDAO;
 import com.example.domain.CheckVO;
+import com.example.domain.StaffVO;
 
 @RestController
 @RequestMapping("/check")
@@ -21,6 +22,11 @@ public class CheckController {
 	@RequestMapping("/list.json")
 	public List<CheckVO> annualList(int use_work_num, int page, int size) {
 		return dao.annualList(use_work_num, page, size);
+	}
+	
+	@RequestMapping("/about")
+	public List<CheckVO> checkList(int use_work_num) {
+		return dao.checkList(use_work_num);
 	}
 	
 	@RequestMapping("/confirm")
@@ -47,4 +53,15 @@ public class CheckController {
 	public void confirmUpdate(@RequestBody CheckVO vo) {
 		dao.confirmUpdate(vo);
 	}
+	
+	@RequestMapping(value="/update/annual" , method=RequestMethod.POST)
+	public void annualUpdate(@RequestBody StaffVO vo) {
+		dao.annualUpdate(vo);
+	}
+	
+	@RequestMapping(value="/insert", method=RequestMethod.POST)
+	public void insert(@RequestBody CheckVO vo) {
+		dao.insert(vo);
+	}
+	
 }

@@ -8,6 +8,12 @@
 		 order by use_name limit #{start}, #{size}		
 	</select>
 	
+	<!--사업장별 결재리스 -->
+	<select id="checkList" resultType="com.example.domain.CheckVO">
+		select *, date_format(chk_day,'%Y-%m-%d') day from view_check where use_work_num = #{use_work_num}
+		order by chk_day desc
+	</select>
+	
 	<!--신청중 조회, 버튼 -->
 	<select id="confirmCheck" resultType="int">
 		select count(*) from view_check where chk_confirm = 1 and use_id=#{use_id};
@@ -32,5 +38,11 @@
 	<!--승인여부 업데이트 -->
 	<update id="confirmUpdate">
 		update tbl_check set chk_confirm = #{chk_confirm} where chk_code = #{chk_code}
+	</update>
+	
+	<!-- 연차정보 업데이트 -->
+	<update id="insert">
+		insert into tbl_check(use_id, chk_confirm, chk_type, chk_time, chk_start, chk_end, chk_day, use_work_num) 
+		values(#{use_id}, #{chk_confirm}, #{chk_type}, #{chk_time}, #{chk_start}, #{chk_end}, now(), #{use_work_num});
 	</update>
 </mapper>

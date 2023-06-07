@@ -16,6 +16,11 @@ public class WorkPlaceDAOImpl implements WorkPlaceDAO{
 	public WorkplaceVO workplace(int use_id) {
 		return session.selectOne(namespace+".workplace", use_id);
 	}
+
+	@Override
+	public WorkplaceVO workabout(int use_work_num) {
+		return session.selectOne(namespace+".workabout",use_work_num);
+	}
 	
 	
 }
