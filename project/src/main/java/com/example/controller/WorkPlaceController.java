@@ -18,5 +18,10 @@ public class WorkPlaceController {
 		return dao.workplace(use_id);
 	
 	}
+	
+	@RequestMapping("/about")
+	public WorkplaceVO workabout(int use_work_num) {
+		return dao.workabout(use_work_num);
+	}
 
 }
