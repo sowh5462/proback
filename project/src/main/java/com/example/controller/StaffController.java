@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dao.StaffDAO;
 import com.example.domain.StaffVO;
+import com.example.domain.UserVO;
 
 @RestController
 @RequestMapping("/staff")
@@ -22,9 +23,29 @@ public class StaffController {
 		return dao.staffList(use_work_num);
 	}
 	
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public void update(@RequestBody StaffVO vo) {
-		dao.update(vo);
-	}
+	
+	@RequestMapping(value="/use_Update", method=RequestMethod.POST)
+	   public void use_Update(@RequestBody UserVO vo) {
+		
+		   try {
+			   System.out.println(vo.toString());
+			dao.use_Update(vo);
+		} catch (Exception e) {
+			System.out.println("유저정보수정:"+e.toString());
+		}
+	   }
+	
+	@RequestMapping(value="/sta_Update", method=RequestMethod.POST)
+	   public void sta_Update(@RequestBody StaffVO vo) {
+		   try {
+			dao.sta_Update(vo);
+		} catch (Exception e) {
+			System.out.println("유저정보수정(스탭):"+e.toString());
+		}
+	   }
+	
+	
+	
+	
 	
 }
