@@ -116,7 +116,7 @@ public class UserController {
 	   
 	   //마지막 use_id - 회원가입
 	   @RequestMapping("/lastnum")
-	   public int lastnum() {
-		   return dao.lastnum();
+	   public int lastnum(String use_login_id) {
+		   return dao.lastnum(use_login_id);
 	   }
 }
