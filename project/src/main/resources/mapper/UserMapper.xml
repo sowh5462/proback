@@ -11,7 +11,7 @@
    
 	<insert id="winsert">
 	   insert into tbl_workplace(use_id, use_work_num, work_address, work_name)
-	   values(#{use_id}, #{use_work_num2}, #{work_address}, #{work_name})
+	   values(#{use_id}, #{use_work_num}, #{work_address}, #{work_name})
 	</insert>
 	
 	<insert id="sinsert">
@@ -38,7 +38,7 @@
 	</select>
 	
 	<select id="lastnum" resultType="int">
-		select use_id from tbl_user order by use_id desc limit 1;
+		select use_id from tbl_user where use_login_id = #{use_login_id}
 	</select>
 
 </mapper>
