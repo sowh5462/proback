@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -38,8 +39,11 @@ public class EventDAOImpl implements EventDAO{
 	}
 
 	@Override
-	public List<EventVO> event(String event_start) {
-		return session.selectList(namespace+".event", event_start);
+	public List<EventVO> event(String event_start, int use_work_num) {
+		HashMap<String,Object> map= new HashMap<String, Object>();
+		map.put("event_start", event_start);
+		map.put("use_work_num", use_work_num);
+		return session.selectList(namespace+".event", map);
 	}
 	
 	

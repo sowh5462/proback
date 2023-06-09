@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.domain.CheckVO;
+import com.example.domain.StaffVO;
 
 @Repository
 public class CheckDAOImpl implements CheckDAO{
@@ -23,6 +24,11 @@ public class CheckDAOImpl implements CheckDAO{
 		map.put("start", (page-1)*size);
 		map.put("size",size);
 		return session.selectList(namespace+".annualList",map);
+	}
+	
+	@Override
+	public List<CheckVO> checkList(int use_work_num) {
+		return session.selectList(namespace+".checkList",use_work_num);
 	}
 
 	@Override
@@ -55,6 +61,20 @@ public class CheckDAOImpl implements CheckDAO{
 	public void confirmUpdate(CheckVO vo) {
 		session.update(namespace+".confirmUpdate",vo);
 	}
+
+	@Override
+	public void annualUpdate(StaffVO vo) {
+		session.update(namespace+".annualUpdate",vo);
+		
+	}
+
+	@Override
+	public void insert(CheckVO vo) {
+		session.insert(namespace+".insert",vo);
+		
+	}
+
+	
 	
 	
 

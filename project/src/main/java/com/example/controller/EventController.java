@@ -18,8 +18,8 @@ public class EventController {
 	EventDAO dao;
 	
 	@RequestMapping("/")
-	public List<EventVO> event(String event_start) {
-		return dao.event(event_start);
+	public List<EventVO> event(String event_start, int use_work_num) {
+		return dao.event(event_start, use_work_num);
 	}
 	
 	@RequestMapping("/list.json")
