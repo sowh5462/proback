@@ -5,5 +5,11 @@
 		select * from tbl_workplace where use_id=#{use_id};
 	</select>
 	
+	<select id="workabout" resultType="com.example.domain.WorkplaceVO">
+		select * from tbl_workplace where use_work_num = #{use_work_num}
+	</select>
+	
+	
+	
 	
 </mapper>

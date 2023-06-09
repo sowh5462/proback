@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
 import com.example.dao.PayDAO;
-import com.example.domain.PayVO;
 
 @RestController
 @RequestMapping("/payroll")

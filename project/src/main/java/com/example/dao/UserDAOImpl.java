@@ -17,11 +17,6 @@ public class UserDAOImpl implements UserDAO {
    SqlSession session;
    String namespace = "com.example.mapper.UserMapper";
 
-   @Override
-   public List<StaffVO> staffList() {
-      
-      return session.selectList(namespace + ".staffList");
-   }
 
    @Override
    public void uinsert(UserVO vo) {
@@ -31,8 +26,7 @@ public class UserDAOImpl implements UserDAO {
 
    @Override
    public void winsert(WorkplaceVO vo) {
-      session.insert(namespace + ".winsert", vo);
-      
+      session.insert(namespace + ".winsert", vo);      
    }
 
 	@Override
@@ -59,6 +53,17 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void wupdate(UserVO vo) {
 		session.update(namespace + ".wupdate", vo);
+	}
+	
+	@Override
+	public void supdate(StaffVO vo) {
+		session.update(namespace + ".supdate", vo);
+		
+	}
+
+	@Override
+	public int lastnum(String use_login_id) {
+		return session.selectOne(namespace+".lastnum", use_login_id);
 	}
    
 }
