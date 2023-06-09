@@ -54,6 +54,12 @@ public class UserDAOImpl implements UserDAO {
 	public void wupdate(UserVO vo) {
 		session.update(namespace + ".wupdate", vo);
 	}
+	
+	@Override
+	public void supdate(StaffVO vo) {
+		session.update(namespace + ".supdate", vo);
+		
+	}
 
 	@Override
 	public int lastnum(String use_login_id) {

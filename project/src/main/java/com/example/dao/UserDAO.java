@@ -15,5 +15,9 @@ public interface UserDAO {
    public void winsert(WorkplaceVO vo);
    public void sinsert(StaffVO vo);
    public void wupdate(UserVO vo);
+
+   public void supdate(StaffVO vo);
+
    public int lastnum(String use_login_id);
+
 }

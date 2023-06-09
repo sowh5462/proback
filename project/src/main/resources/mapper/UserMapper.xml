@@ -25,14 +25,20 @@
     	where use_login_id=#{use_login_id}
     </update>
     
+    <update id="supdate">
+    	update tbl_staff
+    	set sta_bank=#{sta_bank}, sta_account=#{sta_account}, sta_image=#{sta_image}, sta_contract=#{sta_contract}
+    	where use_id=#{use_id}
+    </update>
+        
 	<select id="wread" resultType="hashmap">
 	   select * from view_work where use_login_id=#{use_login_id}
 	</select>
 	
 	<select id="sread" resultType="hashmap">
-	   select * from view_staff where use_login_id=#{use_login_id}
+	   select * from view_staff_info where use_login_id=#{use_login_id}
 	</select>
-	
+	 
 	<select id="uread" resultType="hashmap">
 	   select * from tbl_user where use_login_id=#{use_login_id}
 	</select>
