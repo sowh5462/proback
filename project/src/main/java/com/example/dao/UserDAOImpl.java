@@ -62,8 +62,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int lastnum() {
-		return session.selectOne(namespace+".lastnum");
+	public int lastnum(String use_login_id) {
+		return session.selectOne(namespace+".lastnum", use_login_id);
 	}
    
 }
