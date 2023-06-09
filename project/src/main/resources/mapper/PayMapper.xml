@@ -20,4 +20,19 @@
 		select date_format(pay_date, '%Y-%m-%d') pay_month, format(pay_regular, 0) fmt_pay_regular, use_name, sta_type from view_staffPay where use_work_num = #{use_work_num}
 		order by pay_month desc
 	</select>
+	<select id="payStub" resultType="hashmap">
+		select * from tbl_stub where stub_name like #{stub_name} and use_work_num = #{use_work_num}
+	</select>
+	<select id="staffPay" resultType="hashmap">
+		select * from view_staff where use_name = #{use_name} and use_work_num = #{use_work_num}
+	</select>
+	<select id="payMore" resultType="int">
+		select sum(chk_time) from view_check where use_name = #{use_name} and chk_confirm = 2 and chk_type = '연장' and use_work_num = #{use_work_num}
+	</select>
+	<insert id="insertStub">
+		insert into tbl_stub (use_id, use_work_num, stub_name, stub_url) values (#{use_id}, #{use_work_num}, #{stub_name}, #{stub_url})
+	</insert>
+	<insert id="insertPay">
+		insert into tbl_pay (use_id, pay_regular) values (#{use_id}, #{pay_regular})
+	</insert>
 </mapper>
