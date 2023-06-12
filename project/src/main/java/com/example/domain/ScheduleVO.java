@@ -2,7 +2,7 @@ package com.example.domain;
 
 import java.util.Date;
 
-public class ScheduleVO {
+public class ScheduleVO extends UserVO {
 	private int sche_id;
 	private int use_id;
 	private int sche_day;
