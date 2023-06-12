@@ -114,9 +114,32 @@ public class UserController {
 	      }
 	   }
 	   
+	   @RequestMapping(value="/supdate", method=RequestMethod.POST)
+	   public void supdate(StaffVO vo, MultipartHttpServletRequest multi) {
+		   try {
+			   	if(multi.getFile("file") != null) {
+			   		MultipartFile file=multi.getFile("file");
+					String path="c:/images/photos/";
+					String fileName=System.currentTimeMillis() + ".jpg";
+					file.transferTo(new File(path + fileName));
+					vo.setSta_contract(fileName);
+			   	}
+			   	if(multi.getFile("sta_image") != null) {
+			   		MultipartFile ifile=multi.getFile("sta_image");
+					String path="c:/images/photos/";
+					String imgfileName=System.currentTimeMillis() + ".jpg";
+					ifile.transferTo(new File(path + imgfileName));
+					vo.setSta_image(imgfileName);
+			   	}
+			   dao.supdate(vo);
+		} catch (Exception e) {
+			System.out.println("직원정보수정:"+e.toString());
+		}
+	   }
+	   
 	   //마지막 use_id - 회원가입
 	   @RequestMapping("/lastnum")
-	   public int lastnum() {
-		   return dao.lastnum();
+	   public int lastnum(String use_login_id) {
+		   return dao.lastnum(use_login_id);
 	   }
 }

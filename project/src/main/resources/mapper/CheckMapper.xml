@@ -4,11 +4,11 @@
 
 	<!--직원목록 (연차정보) -->
 	<select id="annualList" resultType="com.example.domain.CheckVO">
-		select * from view_staff where use_work_num = #{use_work_num} and sta_type = 0 or sta_type = 1
+		select * from view_staff where use_work_num = #{use_work_num} and (sta_type = 0 or sta_type = 1)
 		 order by use_name limit #{start}, #{size}		
 	</select>
 	
-	<!--사업장별 결재리스 -->
+	<!--사업장별 결재리스트 -->
 	<select id="checkList" resultType="com.example.domain.CheckVO">
 		select *, date_format(chk_day,'%Y-%m-%d') day from view_check where use_work_num = #{use_work_num}
 		order by chk_day desc
