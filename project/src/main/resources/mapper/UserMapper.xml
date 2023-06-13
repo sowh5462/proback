@@ -15,8 +15,8 @@
 	</insert>
 	
 	<insert id="sinsert">
-       INSERT INTO tbl_staff (use_id, sta_bank, sta_account, sta_type, sta_image, sta_employ, sta_end, sta_contract, sta_annual)
-       VALUES (#{use_id}, #{sta_bank}, #{sta_account}, #{sta_type}, #{sta_image}, #{sta_employ}, #{sta_end}, #{sta_contract}, #{sta_annual})
+		insert into tbl_staff (use_id, sta_bank, sta_account, sta_contract, sta_type, sta_image, sta_employ, sta_end, sta_annual)
+		values (#{use_id}, #{sta_bank}, #{sta_account}, #{sta_contract}, #{sta_type}, #{sta_image}, #{sta_employ}, #{sta_end} , 0);
     </insert>
     
     <update id="wupdate">
