@@ -45,6 +45,6 @@
 		select *, DATE_FORMAT(TIMEDIFF(sche_end, sche_start), '%k') work_time from tbl_schedule where use_id = #{use_id}
 	</select>
 	<select id="payMonth" resultType="hashmap">
-		select sum(Date_format(timediff(time_end, time_start), '%k')) work_time from tbl_time where use_id = #{use_id} and date(time_end) <= #{date}
+		select sum(Date_format(timediff(time_end, time_start), '%k')) work_time from tbl_time where use_id = #{use_id} and date(time_end) %lt;= #{date}
 	</select>
 </mapper>
