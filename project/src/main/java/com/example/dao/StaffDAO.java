@@ -9,6 +9,6 @@ public interface StaffDAO {
 	public List<StaffVO> staffList(int use_work_num);
 	public void use_Update(UserVO vo);
 	public void sta_Update(StaffVO vo);
-	
-	
+	public int annual(int use_id);
+	public void annualUpdate(StaffVO vo);
 }
