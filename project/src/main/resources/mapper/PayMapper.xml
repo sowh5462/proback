@@ -35,4 +35,16 @@
 	<insert id="insertPay">
 		insert into tbl_pay (use_id, pay_regular) values (#{use_id}, #{pay_regular})
 	</insert>
+	<select id="staffStub" resultType="hashmap">
+		select * from tbl_stub where use_id = #{use_id}
+	</select>
+	<select id="payChart" resultType="hashmap">
+		select date_format(pay_date, '%m') fmt_date, sum(pay_regular) '월별 급여' from tbl_pay where use_id = #{use_id} group by pay_date
+	</select>
+	<select id="payToday" resultType="hashmap">
+		select *, DATE_FORMAT(TIMEDIFF(sche_end, sche_start), '%k') work_time from tbl_schedule where use_id = #{use_id}
+	</select>
+	<select id="payMonth" resultType="hashmap">
+		select sum(Date_format(timediff(time_end, time_start), '%k')) work_time from tbl_time where use_id = #{use_id} and date(time_end) <= #{date}
+	</select>
 </mapper>

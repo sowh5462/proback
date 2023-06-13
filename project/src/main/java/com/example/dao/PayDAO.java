@@ -18,4 +18,8 @@ public interface PayDAO {
 	public int payMore(String use_name, int use_work_num);
 	public void insertStub(StubVO vo);
 	public void insertPay(PayVO vo);
+	public List<HashMap<String, Object>> staffStub(int use_id);
+	public List<HashMap<String, Object>> payChart(int use_id);
+	public List<HashMap<String, Object>> payToday(int use_id);
+	public int payMonth(int use_id, String date);
 }

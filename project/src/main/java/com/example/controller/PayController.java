@@ -63,5 +63,21 @@ public class PayController {
 	public void insertPay(@RequestBody PayVO vo) {
 		dao.insertPay(vo);
 	}
+	@RequestMapping("/staff/stub/list.json")
+	public List<HashMap<String, Object>> staffStub(int use_id){
+		return dao.staffStub(use_id);
+	}
+	@RequestMapping("/chart")
+	public List<HashMap<String, Object>> payChart(int use_id){
+		return dao.payChart(use_id);
+	}
+	@RequestMapping("/today")
+	public List<HashMap<String, Object>> payToday(int use_id){
+		return dao.payToday(use_id);
+	}
+	@RequestMapping("/paymonth")
+	public int payMonth(int use_id, String date) {
+		return dao.payMonth(use_id, date);
+	}
 
 }
