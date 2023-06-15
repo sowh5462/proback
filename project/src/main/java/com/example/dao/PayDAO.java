@@ -21,5 +21,7 @@ public interface PayDAO {
 	public List<HashMap<String, Object>> staffStub(int use_id);
 	public List<HashMap<String, Object>> payChart(int use_id);
 	public List<HashMap<String, Object>> payToday(int use_id);
-	public int payMonth(int use_id, String date);
+	public int payUntill(int use_id, String date);
+	public void deleteStub(int stub_id);
+	public void deletePay(String pay_name);
 }

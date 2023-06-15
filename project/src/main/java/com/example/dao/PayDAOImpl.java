@@ -102,11 +102,21 @@ public class PayDAOImpl implements PayDAO {
 	}
 
 	@Override
-	public int payMonth(int use_id, String date) {
+	public int payUntill(int use_id, String date) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("use_id", use_id);
 		map.put("date", date);
-		return session.selectOne(namespace + ".payMonth", map);
+		return session.selectOne(namespace + ".payUntill", map);
+	}
+
+	@Override
+	public void deleteStub(int stub_id) {
+		session.delete(namespace + ".deleteStub", stub_id);
+	}
+
+	@Override
+	public void deletePay(String pay_name) {
+		session.delete(namespace + ".deletePay", pay_name);
 	}
 
 	

@@ -75,9 +75,17 @@ public class PayController {
 	public List<HashMap<String, Object>> payToday(int use_id){
 		return dao.payToday(use_id);
 	}
-	@RequestMapping("/paymonth")
-	public int payMonth(int use_id, String date) {
-		return dao.payMonth(use_id, date);
+	@RequestMapping("/untill")
+	public int payUntill(int use_id, String date) {
+		return dao.payUntill(use_id, date);
+	}
+	@RequestMapping("/stub/delete")
+	public void deleteStub(int stub_id) {
+		dao.deleteStub(stub_id);
+	}
+	@RequestMapping("/pay/delete")
+	public void deletePay(String pay_name) {
+		dao.deletePay(pay_name);
 	}
 
 }

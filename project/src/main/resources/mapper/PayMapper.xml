@@ -33,7 +33,7 @@
 		insert into tbl_stub (use_id, use_work_num, stub_name, stub_url) values (#{use_id}, #{use_work_num}, #{stub_name}, #{stub_url})
 	</insert>
 	<insert id="insertPay">
-		insert into tbl_pay (use_id, pay_regular) values (#{use_id}, #{pay_regular})
+		insert into tbl_pay (use_id, pay_regular, pay_name) values (#{use_id}, #{pay_regular}, #{pay_name})
 	</insert>
 	<select id="staffStub" resultType="hashmap">
 		select * from tbl_stub where use_id = #{use_id}
@@ -44,7 +44,13 @@
 	<select id="payToday" resultType="hashmap">
 		select *, DATE_FORMAT(TIMEDIFF(sche_end, sche_start), '%k') work_time from tbl_schedule where use_id = #{use_id}
 	</select>
-	<select id="payMonth" resultType="hashmap">
-		select sum(Date_format(timediff(time_end, time_start), '%k')) work_time from tbl_time where use_id = #{use_id} and date(time_end) %lt;= #{date}
+	<select id="payUntill" resultType="int">
+    	select sum(Date_format(TIMEDIFF(time_end, time_start), '%k')) work_time from tbl_time where use_id = #{use_id} and date(time_end) &lt;= #{date}
 	</select>
+	<delete id="deleteStub">
+		delete from tbl_stub where stub_id = #{stub_id}
+	</delete>
+	<delete id="deletePay">
+		delete from tbl_pay where pay_name = #{pay_name}
+	</delete>
 </mapper>
