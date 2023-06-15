@@ -86,6 +86,39 @@ public class PayDAOImpl implements PayDAO {
 		session.insert(namespace + ".insertPay", vo);
 	}
 
+	@Override
+	public List<HashMap<String, Object>> staffStub(int use_id) {
+		return session.selectList(namespace + ".staffStub", use_id);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> payChart(int use_id) {
+		return session.selectList(namespace + ".payChart", use_id);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> payToday(int use_id) {
+		return session.selectList(namespace + ".payToday", use_id);
+	}
+
+	@Override
+	public int payUntill(int use_id, String date) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("use_id", use_id);
+		map.put("date", date);
+		return session.selectOne(namespace + ".payUntill", map);
+	}
+
+	@Override
+	public void deleteStub(int stub_id) {
+		session.delete(namespace + ".deleteStub", stub_id);
+	}
+
+	@Override
+	public void deletePay(String pay_name) {
+		session.delete(namespace + ".deletePay", pay_name);
+	}
+
 	
 
 }
