@@ -10,5 +10,4 @@ public interface StaffDAO {
 	public void use_Update(UserVO vo);
 	public void sta_Update(StaffVO vo);
 	public int annual(int use_id);
-	public void annualUpdate(StaffVO vo);
 }

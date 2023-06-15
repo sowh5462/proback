@@ -30,6 +30,12 @@ public class CheckDAOImpl implements CheckDAO{
 	public List<CheckVO> checkList(int use_work_num) {
 		return session.selectList(namespace+".checkList",use_work_num);
 	}
+	
+	@Override
+	public int count(int use_work_num) {
+		return session.selectOne(namespace+".count",use_work_num);
+	}
+
 
 	@Override
 	public int confirmCheck(int use_id) {
@@ -73,6 +79,12 @@ public class CheckDAOImpl implements CheckDAO{
 		session.insert(namespace+".insert",vo);
 		
 	}
+
+	@Override
+	public List<CheckVO> staffCheck(int use_id) {
+		return session.selectList(namespace+".staffCheck", use_id);
+	}
+
 
 	
 	

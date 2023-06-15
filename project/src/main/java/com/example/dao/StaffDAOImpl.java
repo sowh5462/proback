@@ -38,11 +38,6 @@ public class StaffDAOImpl implements StaffDAO {
 		return session.selectOne(namespace+".annual",use_id);
 	}
 
-	@Override
-	public void annualUpdate(StaffVO vo) {
-		session.update(namespace+".annualUpdate",vo);
-		
-	}
 		
 	}
 	

@@ -49,14 +49,5 @@ public class StaffController {
 		return dao.annual(use_id);	
 	}
 	
-	@RequestMapping(value="/annual/update", method=RequestMethod.POST)
-	   public void annualUpdate(@RequestBody StaffVO vo) {
-		   try {
-			dao.annualUpdate(vo);
-		} catch (Exception e) {
-			System.out.println("연차정보수정:"+e.toString());
-		}
-	   }
-	
 	
 }

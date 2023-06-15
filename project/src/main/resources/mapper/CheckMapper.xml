@@ -8,6 +8,11 @@
 		 order by use_name limit #{start}, #{size}		
 	</select>
 	
+	<!--페이징하기 위한 직원 수 -->
+	<select id="count" resultType="int">
+		select count(*) from view_staff where use_work_num = #{use_work_num} and (sta_type = 0 or sta_type = 1)
+	</select>
+	
 	<!--사업장별 결재리스트 -->
 	<select id="checkList" resultType="com.example.domain.CheckVO">
 		select *, date_format(chk_day,'%Y-%m-%d') day from view_check where use_work_num = #{use_work_num}
@@ -40,9 +45,22 @@
 		update tbl_check set chk_confirm = #{chk_confirm} where chk_code = #{chk_code}
 	</update>
 	
-	<!-- 연차정보 업데이트 -->
-	<update id="insert">
+	<!-- 결재 추가 -->
+	<insert id="insert">
 		insert into tbl_check(use_id, chk_confirm, chk_type, chk_time, chk_start, chk_end, chk_day, use_work_num) 
 		values(#{use_id}, #{chk_confirm}, #{chk_type}, #{chk_time}, #{chk_start}, #{chk_end}, now(), #{use_work_num});
+	</insert>
+	
+	<!-- 연차정보 업데이트 -->
+	<update id="annualUpdate">
+		update tbl_staff set sta_annual = sta_annual - #{sta_annual} where use_id=#{use_id}
 	</update>
+	
+	<!--  직원별 결재내역 -->
+	<select id="staffCheck" resultType="com.example.domain.CheckVO">
+		select *, date_format(chk_start,"%Y-%m-%d") start,
+		date_format(chk_end,"%Y-%m-%d") end,
+		date_format(chk_day,"%Y-%m-%d") day
+		from view_check where use_id=#{use_id} order by chk_confirm
+	</select>
 </mapper>
