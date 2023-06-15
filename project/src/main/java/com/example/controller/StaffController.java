@@ -44,8 +44,10 @@ public class StaffController {
 		}
 	   }
 	
-	
-	
+	@RequestMapping("/annual")
+	public int annual(int use_id) {
+		return dao.annual(use_id);	
+	}
 	
 	
 }
