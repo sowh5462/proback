@@ -130,8 +130,8 @@ public class UserController {
                file.transferTo(new File(path + fileName));
                vo.setSta_contract(fileName);
                }
-               if(multi.getFile("sta_image") != null) {
-                  MultipartFile ifile=multi.getFile("sta_image");
+               if(multi.getFile("sta_file") != null) {
+                  MultipartFile ifile=multi.getFile("sta_file");
                String path="/Users/sy/images/photos/";
                String imgfileName=System.currentTimeMillis() + ".jpg";
                ifile.transferTo(new File(path + imgfileName));
