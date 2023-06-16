@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.TimeMapper">
+	<insert id="tinsert">
+	  insert into tbl_time(use_id, time_start, time_end)
+	  select #{use_id}, now(), null
+	  from dual
+	  where not exists (
+	    select 1
+	    from tbl_time
+	    where date(time_start) = curdate()
+	  )
+	  limit 1;
+	</insert>
+
+	
+	<update id="tupdate">
+		update tbl_time
+	    set time_end = now()
+	    where use_id = #{use_id} and time_end is null and DATE(time_start) = CURDATE()	</update>
+	
+	
+	<select id="tread" resultType="com.example.domain.TimeVO">
+	  SELECT *, DATE_FORMAT(time_start, "%Y-%m-%d %H:%i") AS start, DATE_FORMAT(time_end, "%H:%i") AS end
+	  FROM tbl_time where use_id = #{use_id} order by time_code desc;
+	</select>
+
+</mapper>
