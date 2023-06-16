@@ -7,6 +7,14 @@
 		select * from view_schedule where use_id=#{use_id}
 	</select>
 	
+	<select id="scheduleListStaff" resultType="com.example.domain.ScheduleVO">
+		select * from view_schedule_time2 where use_id=#{use_id} order by start
+	</select>
+	
+	<select id="scheduleList2" resultType="HashMap">
+		select * from view_schedule where use_id=#{use_id}
+	</select>
+	
 	<select id="scheduleList1" resultType="HashMap">
 		select * from view_schedule where use_work_num=#{use_work_num}
 	</select>
