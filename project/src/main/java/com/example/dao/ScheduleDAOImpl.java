@@ -40,6 +40,14 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 		session.insert(namespace+".scheInsert", vo);
 		
 	}
+	@Override
+	public List<HashMap<String, Object>> scheduleList2(int use_id) {
+		return session.selectList(namespace + ".scheduleList2", use_id);
+	}
+	@Override
+	public List<ScheduleVO> scheduleListStaff(int use_id) {
+		return session.selectList(namespace + ".scheduleListStaff", use_id);
+	}
 	
 	
 	
