@@ -46,6 +46,12 @@ public class ScheduleController {
 			
 	}
 	
+	@RequestMapping("/scheduleList2")
+	public List<UserVO> scheduleList2(int use_id){
+		return dao.userList(use_id);
+	}
+	
+	
 	@RequestMapping(value="/scheInsert", method=RequestMethod.POST)
 	public void schInsert(ScheduleVO vo) {
 		try {
@@ -56,7 +62,10 @@ public class ScheduleController {
 		
 	}
 	
-	
+	@RequestMapping("/listStaff.json")
+	public List<ScheduleVO> scheduleListStaff(int use_id){
+		return dao.scheduleListStaff(use_id);
+	}
 	
 	
 	
