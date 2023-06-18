@@ -106,7 +106,8 @@ public class PayDAOImpl implements PayDAO {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("use_id", use_id);
 		map.put("date", date);
-		return session.selectOne(namespace + ".payUntill", map);
+		Integer result = session.selectOne(namespace + ".payUntill", map);
+		return result != null ? result.intValue() : 0;
 	}
 
 	@Override

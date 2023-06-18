@@ -2,14 +2,18 @@ package com.example.domain;
 
 import java.util.Date;
 
-public class TimeVO {
+public class TimeVO extends StaffVO{
+	private int time_code;
 	private int use_id;
 	private Date time_start;
 	private Date time_end;
-	
-	@Override
-	public String toString() {
-		return "TimeVO [use_id=" + use_id + ", time_start=" + time_start + ", time_end=" + time_end + "]";
+	private String start;
+	private String end;
+	public int getTime_code() {
+		return time_code;
+	}
+	public void setTime_code(int time_code) {
+		this.time_code = time_code;
 	}
 	public int getUse_id() {
 		return use_id;
@@ -29,5 +33,19 @@ public class TimeVO {
 	public void setTime_end(Date time_end) {
 		this.time_end = time_end;
 	}
+	public String getStart() {
+		return start;
+	}
+	public void setStart(String start) {
+		this.start = start;
+	}
+	public String getEnd() {
+		return end;
+	}
+	public void setEnd(String end) {
+		this.end = end;
+	}
+	
+	
 	
 }
