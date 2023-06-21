@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.PayMapper">
+	<select id="paySum" resultType="String">
+		select format(sum(pay_regular), 0) from view_staffPay where use_work_num = #{use_work_num}
+	</select>
+	<select id="staffTotal" resultType="int">
+		select count(*) from view_staff where use_work_num = #{use_work_num}
+	</select>
+	<select id="tempPaySum" resultType="String">
+		select format(sum(pay_hour * 6), 0) from view_staffPay where use_work_num = #{use_work_num}
+	</select>
+	<select id="staffType" resultType="hashmap">
+		select sta_type, count(*) count from view_staff where use_work_num = #{use_work_num} group by sta_type
+	</select>
+	<select id="payMonth" resultType="hashmap">
+		select date_format(pay_date, '%Y-%m') pay_month, sum(pay_regular) '월별통계' from view_staffPay where use_work_num = #{use_work_num} group by pay_month
+	</select>
+	<select id="payInfo" resultType="hashmap">
+		select date_format(pay_date, '%Y-%m-%d') pay_month, format(pay_regular, 0) fmt_pay_regular, use_name, sta_type from view_staffPay where use_work_num = #{use_work_num}
+		order by pay_month desc
+	</select>
+</mapper>

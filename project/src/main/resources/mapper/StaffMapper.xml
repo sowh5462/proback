@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.Staff">
+<mapper namespace="com.example.mapper.StaffMapper">
 	<select id="staffList" resultType="com.example.domain.StaffVO">
 		select * from view_staff where use_work_num=#{use_work_num};
 	</select>
 	
-	<update id="staffUpdate">
-		update tbl_staff set sta_bank=#{sta_bank}, sta_type=#{sta_type} where use_id=#{use_id}
+	<update id="use_Update">
+		update tbl_user set use_name=#{use_name}, use_phone=#{use_phone}, use_address=#{use_address} where use_id=#{use_id};
 	</update>
+	
+	<update id="sta_Update">
+		update tbl_staff set sta_bank=#{sta_bank}, sta_type=#{sta_type}, sta_account=#{sta_account}, sta_employ=#{sta_employ}, sta_end=#{sta_end} where use_id=#{use_id}
+	</update>
+	
+	<select id="annual" resultType="int">
+		select sta_annual from tbl_staff where use_id=#{use_id}
+	</select>
 	
 	
 </mapper>

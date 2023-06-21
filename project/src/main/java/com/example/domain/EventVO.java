@@ -9,8 +9,22 @@ public class EventVO {
 	private String event_name;
 	private Date event_start;
 	private Date event_end;
+	private String start;
+	private String end;
 	
 	
+	public String getStart() {
+		return start;
+	}
+	public void setStart(String start) {
+		this.start = start;
+	}
+	public String getEnd() {
+		return end;
+	}
+	public void setEnd(String end) {
+		this.end = end;
+	}
 	@Override
 	public String toString() {
 		return "EventVO [use_id=" + use_id + ", event_id=" + event_id + ", use_work_num=" + use_work_num

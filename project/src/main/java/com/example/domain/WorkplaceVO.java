@@ -3,8 +3,17 @@ package com.example.domain;
 public class WorkplaceVO {
 	private int use_id;
 	private int use_work_num;
+	private int use_work_num2;
 	private String work_address;
 	private String work_name;
+	
+	public int getUse_work_num2() {
+		return use_work_num2;
+	}
+	public void setUse_work_num2(int use_work_num2) {
+		this.use_work_num2 = use_work_num2;
+	}
+	
 	
 	@Override
 	public String toString() {
