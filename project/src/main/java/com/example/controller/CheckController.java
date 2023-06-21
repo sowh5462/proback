@@ -29,6 +29,12 @@ public class CheckController {
 		return dao.checkList(use_work_num);
 	}
 	
+	@RequestMapping("/count")
+	public int count(int use_work_num) {
+		return dao.count(use_work_num);
+	}
+	
+	
 	@RequestMapping("/confirm")
 	public int confirmCheck(int use_id) {
 		return dao.confirmCheck(use_id);
@@ -62,6 +68,11 @@ public class CheckController {
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public void insert(@RequestBody CheckVO vo) {
 		dao.insert(vo);
+	}
+	
+	@RequestMapping("/staff")
+	public List<CheckVO> staffCheck(int use_id){
+		return dao.staffCheck(use_id);
 	}
 	
 }

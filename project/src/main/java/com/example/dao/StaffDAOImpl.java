@@ -1,5 +1,6 @@
 package com.example.dao;
 
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -31,6 +32,13 @@ public class StaffDAOImpl implements StaffDAO {
 		session.update(namespace + ".sta_Update", vo);
 		
 	}
+
+	@Override
+	public int annual(int use_id) {
+	
+		return session.selectOne(namespace+".annual",use_id);
+	}
+
 		
 	}
 	
