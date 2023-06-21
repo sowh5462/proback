@@ -101,14 +101,14 @@ public class UserController {
          try {
                if(multi.getFile("file") != null) {
                   MultipartFile file=multi.getFile("file");
-               String path="/Users/sy/images/photos/";
+               String path="c:/images/photos/";
                String fileName=System.currentTimeMillis() + ".jpg";
                file.transferTo(new File(path + fileName));
                vo.setSta_image(fileName);        
                }
                if(multi.getFile("sta_contract") != null) {
                 MultipartFile ifile=multi.getFile("sta_contract");
-                String path="/Users/sy/images/photos/";
+                String path="c:/images/photos/";
                 String imgfileName=System.currentTimeMillis() + ".jpg";
                 ifile.transferTo(new File(path + imgfileName));
                 vo.setSta_contract(imgfileName);
