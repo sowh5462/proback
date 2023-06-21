@@ -22,7 +22,7 @@
 	
 	<select id="tread" resultType="com.example.domain.TimeVO">
 	  SELECT *, DATE_FORMAT(time_start, "%Y-%m-%d %H:%i") AS start, DATE_FORMAT(time_end, "%H:%i") AS end
-	  FROM tbl_time where use_id = #{use_id} order by time_code desc;
+	  FROM tbl_time where use_id = #{use_id} order by time_start desc;
 	</select>
 
 </mapper>
