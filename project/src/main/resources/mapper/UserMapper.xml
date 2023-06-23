@@ -1,7 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.UserMapper">
-	<select id="list" resultType="com.example.domain.StaffVO">
-		select * from view_staff order by use_id
+<mapper namespace="com.example.mapper.UserMapper">	
+   	
+	<insert id="uinsert">
+      insert into tbl_user(use_work_num, use_login_id, use_login_pass, 
+      use_phone , use_name, use_birth, use_address, use_email, use_type)
+      values(#{use_work_num}, #{use_login_id}, #{use_login_pass}, #{use_phone}, #{use_name}, #{use_birth},
+       #{use_address}, #{use_email}, #{use_type})
+   </insert>
+   
+	<insert id="winsert">
+	   insert into tbl_workplace(use_id, use_work_num, work_address, work_name)
+	   values(#{use_id}, #{use_work_num}, #{work_address}, #{work_name})
+	</insert>
+	
+	<insert id="sinsert">
+		insert into tbl_staff (use_id, sta_bank, sta_account, sta_contract, sta_type, sta_image, sta_employ, sta_end, sta_annual)
+		values (#{use_id}, #{sta_bank}, #{sta_account}, #{sta_contract}, #{sta_type}, #{sta_image}, #{sta_employ}, #{sta_end} , 0);
+    </insert>
+    
+    <update id="wupdate">
+    	update tbl_user
+    	set use_login_id=#{use_login_id}, use_login_pass=#{use_login_pass}, use_address=#{use_address}, use_email=#{use_email}, use_phone=#{use_phone}
+    	where use_login_id=#{use_login_id}
+    </update>
+    
+    <update id="supdate">
+    	update tbl_staff
+    	set sta_bank=#{sta_bank}, sta_account=#{sta_account}, sta_image=#{sta_image}, sta_contract=#{sta_contract}
+    	where use_id=#{use_id}
+    </update>
+        
+	<select id="wread" resultType="hashmap">
+	   select * from view_work where use_login_id=#{use_login_id}
 	</select>
+	
+	<select id="sread" resultType="hashmap">
+	   select * from view_staff_info where use_login_id=#{use_login_id}
+	</select>
+	 
+	<select id="uread" resultType="hashmap">
+	   select * from tbl_user where use_login_id=#{use_login_id}
+	</select>
+	
+	<select id="lastnum" resultType="int">
+		select use_id from tbl_user where use_login_id = #{use_login_id}
+	</select>
+
 </mapper>

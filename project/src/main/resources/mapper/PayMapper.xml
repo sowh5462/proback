@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.PayMapper">
+	<select id="paySum" resultType="String">
+		select format(sum(pay_regular), 0) from view_staffPay where use_work_num = #{use_work_num}
+	</select>
+	<select id="staffTotal" resultType="int">
+		select count(*) from view_staff where use_work_num = #{use_work_num}
+	</select>
+	<select id="tempPaySum" resultType="String">
+		select format(sum(pay_regular), 0) from view_staffPay where use_work_num = #{use_work_num} and sta_type = 2
+	</select>
+	<select id="staffType" resultType="hashmap">
+		select sta_type, count(*) count from view_staff where use_work_num = #{use_work_num} group by sta_type
+	</select>
+	<select id="payMonth" resultType="hashmap">
+		select date_format(pay_date, '%Y-%m') pay_month, sum(pay_regular) '월별통계' from view_staffPay where use_work_num = #{use_work_num} group by pay_month
+	</select>
+	<select id="payInfo" resultType="hashmap">
+		select date_format(pay_date, '%Y-%m-%d') pay_month, format(pay_regular, 0) fmt_pay_regular, use_name, sta_type from view_staffPay where use_work_num = #{use_work_num}
+		order by pay_date desc
+	</select>
+	<select id="payStub" resultType="hashmap">
+		select * from tbl_stub where stub_name like #{stub_name} and use_work_num = #{use_work_num}
+	</select>
+	<select id="staffPay" resultType="hashmap">
+		select * from view_staff where use_name = #{use_name} and use_work_num = #{use_work_num}
+	</select>
+	<select id="payMore" resultType="int">
+		select sum(chk_time) from view_check where use_name = #{use_name} and chk_confirm = 2 and chk_type = '연장' and use_work_num = #{use_work_num}
+	</select>
+	<insert id="insertStub">
+		insert into tbl_stub (use_id, use_work_num, stub_name, stub_url) values (#{use_id}, #{use_work_num}, #{stub_name}, #{stub_url})
+	</insert>
+	<insert id="insertPay">
+		insert into tbl_pay (use_id, pay_regular, pay_name) values (#{use_id}, #{pay_regular}, #{pay_name})
+	</insert>
+	<select id="staffStub" resultType="hashmap">
+		select * from tbl_stub where use_id = #{use_id}
+	</select>
+	<select id="payChart" resultType="hashmap">
+		select date_format(pay_date, '%m') fmt_date, sum(pay_regular) '월별 급여' from tbl_pay where use_id = #{use_id} group by pay_date
+	</select>
+	<select id="payToday" resultType="hashmap">
+		select *, DATE_FORMAT(TIMEDIFF(sche_end, sche_start), '%k') work_time from tbl_schedule where use_id = #{use_id}
+	</select>
+	<select id="payUntill" resultType="int">
+    	select sum(Date_format(TIMEDIFF(time_end, time_start), '%k')) work_time from tbl_time where use_id = #{use_id} and date(time_end) &lt;= #{date}
+	</select>
+	<delete id="deleteStub">
+		delete from tbl_stub where stub_id = #{stub_id}
+	</delete>
+	<delete id="deletePay">
+		delete from tbl_pay where pay_name = #{pay_name}
+	</delete>
+</mapper>
